@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Video demo of the Urban Air Quality Assistant: description, features, and team roles and responsibilities, narrated with Start and Stop buttons.">
+<title>Urban Air Quality Assistant: Video Demo</title>
+<style>
+:root{--bg:#eef7f0;--surface:#fff;--text:#14281b;--muted:#4a5f50;--primary:#1b6b35;--primary-text:#fff;--stop:#b3261e;--border:#cfe3d4;--focus:#0b57d0;--accent:#e3f3e7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1a13;--surface:#18271d;--text:#e8f3ea;--muted:#a9bfae;--primary:#5fcf80;--primary-text:#0b1a10;--stop:#ff8a80;--border:#2c4233;--focus:#8ab4ff;--accent:#1f3426}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.skip{position:absolute;left:-999px;top:0;background:var(--primary);color:var(--primary-text);padding:10px 14px}
+.skip:focus{left:8px;top:8px}
+header{text-align:center;padding:22px 16px 6px}
+h1{margin:0 0 4px;font-size:clamp(1.4rem,4vw,2.1rem)}
+header p{margin:0;color:var(--muted)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 40px;display:grid;gap:16px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+button{padding:12px 28px;border:0;border-radius:10px;font-size:1.05rem;font-weight:700;cursor:pointer;background:var(--primary);color:var(--primary-text)}
+button#stop{background:var(--stop);color:#fff}
+button:disabled{opacity:.45;cursor:not-allowed}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.opt{display:flex;gap:6px;align-items:center;color:var(--muted)}
+.status{text-align:center;color:var(--muted);min-height:1.5em}
+.stage{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;min-height:340px;display:flex;flex-direction:column;gap:12px}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem}
+.stage h2{margin:0;font-size:clamp(1.3rem,3.2vw,1.9rem)}
+.stage ul{margin:0;padding-left:22px}
+.stage li{margin:6px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.card{background:var(--accent);border:1px solid var(--border);border-radius:10px;padding:12px}
+.card h3{margin:0 0 4px;font-size:1rem}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}
+.demo{background:var(--accent);border-radius:10px;padding:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.demo strong{font-size:1.15rem}
+.gauge{flex:1 1 220px;height:14px;border-radius:7px;background:linear-gradient(90deg,#2e9e4f 0 16%,#e6c200 16% 33%,#f08a24 33% 50%,#d93a2f 50% 66%,#8e24aa 66% 83%,#6a1b4d 83% 100%);position:relative}
+.gauge span{position:absolute;top:-5px;width:6px;height:24px;background:var(--text);border-radius:3px;transform:translateX(-50%);transition:left .6s}
+.progress{height:8px;border-radius:4px;background:var(--border);overflow:hidden}
+.progress div{height:100%;width:0;background:var(--primary);transition:width .4s}
+.dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots i{width:12px;height:12px;border-radius:50%;background:var(--border)}
+.dots i.on{background:var(--primary)}
+.caption{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;min-height:4.5em}
+.caption small{display:block;color:var(--muted);margin-bottom:4px;font-weight:600}
+details{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px}
+summary{cursor:pointer;font-weight:700}
+details ol{padding-left:20px}
+details li{margin:8px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#stage">Skip to demo</a>
+<header>
+  <h1><span aria-hidden="true">🎬</span> Urban Air Quality Assistant: Video Demo</h1>
+  <p>Press <strong>Start</strong> to play the narrated walkthrough. Press <strong>Stop</strong> to end and reset it.</p>
+</header>
+
+<main>
+  <div class="controls" role="group" aria-label="Demo controls">
+    <button id="start" type="button">▶ Start</button>
+    <button id="stop" type="button" disabled>■ Stop</button>
+    <label class="opt"><input id="voice" type="checkbox" checked> Voice narration</label>
+  </div>
+  <p id="status" class="status" role="status">Ready. Total length is about 2 minutes.</p>
+
+  <section id="stage" class="stage" aria-label="Demo slide">
+    <div class="meta"><span id="scene-no">Scene 0 of 0</span><span id="clock">00:00</span></div>
+    <h2 id="s-title">Welcome</h2>
+    <div id="s-body"><ul><li>Click <strong>Start</strong> to begin the demo.</li></ul></div>
+  </section>
+
+  <div class="progress" aria-hidden="true"><div id="bar"></div></div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+
+  <div class="caption" aria-live="polite"><small>Narration</small><span id="caption">The narration text appears here while the demo plays.</span></div>
+
+  <details>
+    <summary>📜 Full video script (read aloud or record your voice-over)</summary>
+    <ol id="script"></ol>
+  </details>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Each scene: title, on-screen content (built with safe DOM methods), narration text */
+  var SCENES = [
+    { title: "Urban Air Quality Assistant", type: "list",
+      items: ["Turn any AQI number into clear health advice", "Fast, accessible, offline, and private", "Presented by Gundluru Rajasekhar"],
+      say: "Hello, and welcome. This is the Urban Air Quality Assistant, a simple web app that turns an air quality number into clear, practical health advice for people living in cities." },
+
+    { title: "The Problem", type: "list",
+      items: ["People see an AQI number but do not know what it means", "Children, elderly people, and patients are most at risk", "Advice online is often scattered or too technical"],
+      say: "Every day, city residents see an A Q I number on their phone, but few know what it means for their health. Children, older adults, and people with asthma or heart conditions are most at risk, and they need clear guidance quickly." },
+
+    { title: "What the App Is", type: "list",
+      items: ["A single-page, rule-based web application", "Works offline with no API key, login, or tracking", "Built with HTML, CSS, and JavaScript only", "Standard six-level AQI scale from 0 to 500"],
+      say: "The assistant is a lightweight, rule-based web application. It runs entirely in your browser with no A P I key, no sign-up, and no tracking. It uses the standard six-level A Q I scale, from zero to five hundred." },
+
+    { title: "Key Features", type: "cards",
+      cards: [["📊 AQI Checker", "Validated input with category, colour, and gauge"], ["💚 Smart Advice", "Tips for children, elderly, patients, and outdoor workers"], ["🕒 History", "Last 10 checks as a table and chart, stored on your device"], ["♿ Accessible", "Keyboard, screen reader, dark mode, and mobile ready"]],
+      say: "Here are the key features. First, an A Q I checker with validation, colour, and a gauge. Second, smart advice that adapts to children, the elderly, patients, and outdoor workers. Third, a history of your last ten checks. And fourth, full accessibility, with keyboard and screen reader support, dark mode, and a mobile friendly layout." },
+
+    { title: "Live Demo: Checking the Air", type: "demo",
+      say: "Now a quick demo. I enter an A Q I of one hundred thirty five. The app instantly shows Unhealthy for Sensitive Groups, moves the gauge marker, and lists recommended actions. If I select Children, it adds a specific tip to limit outdoor play. If the value is invalid, such as six hundred, it shows a clear error message instead." },
+
+    { title: "Roles and Responsibilities", type: "cards",
+      cards: [["🧭 Product Owner", "Defines the problem, users, and acceptance criteria"], ["💻 Full Stack Developer", "Builds the logic, validation, history, and deployment"], ["🎨 UI/UX and Accessibility Lead", "Designs the layout, contrast, focus, and screen reader support"], ["🧪 QA Tester", "Runs the 15-point checklist for ranges, errors, and devices"], ["🔒 Security and Privacy Officer", "Ensures safe input handling and no data leaves the device"], ["📝 Documentation and DevOps", "Maintains the README and publishes on GitHub Pages"]],
+      say: "Now, the roles and responsibilities. The Product Owner defines the problem, users, and acceptance criteria. The Full Stack Developer builds the logic, validation, history, and deployment. The U I and Accessibility Lead designs the layout, contrast, and screen reader support. The Q A Tester runs the fifteen point checklist. The Security and Privacy Officer makes sure input is handled safely and no data leaves the device. And Documentation and Dev Ops maintains the readme and publishes the app on GitHub Pages." },
+
+    { title: "The Four Project Files", type: "cards",
+      cards: [["index.html", "The complete app: layout, styles, and logic"], ["requirements.md", "Problem, requirements, and acceptance criteria"], ["readme.md", "Features, setup, deployment, and accessibility notes"], ["tasks.md", "Task plan and test checklist"]],
+      say: "The project is delivered in four files. Index dot H T M L contains the complete app. Requirements dot M D lists the problem and acceptance criteria. Readme dot M D explains features and deployment. And Tasks dot M D holds the task plan and test checklist." },
+
+    { title: "Thank You", type: "list",
+      items: ["Clean air information for everyone", "Open the live link and try it yourself", "Health guidance is general information, not medical advice"],
+      say: "Thank you for watching. The Urban Air Quality Assistant helps everyone make safer outdoor decisions. Please open the live link and try it yourself. Remember, the guidance is general information and not medical advice. Thank you." }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var token = 0, idx = -1, timer = null, clockTimer = null, t0 = 0, demoTimer = null;
+  var canSpeak = "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined";
+
+  /* Build dots and the readable script */
+  SCENES.forEach(function (s, i) {
+    var d = document.createElement("i"); $("dots").appendChild(d);
+    var li = document.createElement("li");
+    var b = document.createElement("strong"); b.textContent = s.title + ": ";
+    li.appendChild(b); li.appendChild(document.createTextNode(s.say));
+    $("script").appendChild(li);
+  });
+
+  function el(tag, text) { var e = document.createElement(tag); if (text) { e.textContent = text; } return e; }
+
+  function renderScene(i) {
+    var s = SCENES[i], body = $("s-body");
+    body.textContent = "";
+    $("s-title").textContent = s.title;
+    $("scene-no").textContent = "Scene " + (i + 1) + " of " + SCENES.length;
+    $("caption").textContent = s.say;
+    $("bar").style.width = ((i + 1) / SCENES.length * 100) + "%";
+    Array.prototype.forEach.call($("dots").children, function (d, k) { d.className = k <= i ? "on" : ""; });
+
+    if (s.type === "list") {
+      var ul = el("ul");
+      s.items.forEach(function (t) { ul.appendChild(el("li", t)); });
+      body.appendChild(ul);
+    } else if (s.type === "cards") {
+      var wrap = el("div"); wrap.className = "cards";
+      s.cards.forEach(function (c) {
+        var card = el("div"); card.className = "card";
+        card.appendChild(el("h3", c[0])); card.appendChild(el("p", c[1]));
+        wrap.appendChild(card);
+      });
+      body.appendChild(wrap);
+    } else if (s.type === "demo") {
+      runDemo(body);
+    }
+  }
+
+  /* Animated mini demo: types an AQI value and shows the result */
+  function runDemo(body) {
+    var box = el("div"); box.className = "demo";
+    var val = el("strong", "AQI: "), cat = el("strong", ""), gauge = el("div"), mark = el("span");
+    gauge.className = "gauge"; gauge.setAttribute("aria-hidden", "true"); mark.style.left = "0%"; gauge.appendChild(mark);
+    box.appendChild(val); box.appendChild(cat); box.appendChild(gauge);
+    var ul = el("ul"); ul.style.flexBasis = "100%";
+    body.appendChild(box); body.appendChild(ul);
+    var my = token, digits = "135", n = 0;
+    function type() {
+      if (my !== token) { return; }
+      if (n < digits.length) { n++; val.textContent = "AQI: " + digits.slice(0, n); demoTimer = setTimeout(type, 450); }
+      else {
+        cat.textContent = "→ Unhealthy for Sensitive Groups"; cat.style.color = "#b35400"; mark.style.left = "27%";
+        demoTimer = setTimeout(function () {
+          if (my !== token) { return; }
+          ["Reduce prolonged outdoor exertion", "Consider an N95 mask outdoors", "Children: limit outdoor play and school sports"].forEach(function (t) { ul.appendChild(el("li", t)); });
+        }, 700);
+      }
+    }
+    demoTimer = setTimeout(type, 600);
+  }
+
+  function clock() {
+    var sec = Math.floor((Date.now() - t0) / 1000);
+    $("clock").textContent = ("0" + Math.floor(sec / 60)).slice(-2) + ":" + ("0" + (sec % 60)).slice(-2);
+  }
+
+  function clearAll() {
+    token++; clearTimeout(timer); clearTimeout(demoTimer); clearInterval(clockTimer);
+    if (canSpeak) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+  }
+
+  function play(i) {
+    if (i >= SCENES.length) { finish(); return; }
+    idx = i; var my = ++token;
+    renderScene(i);
+    var words = SCENES[i].say.split(/\s+/).length;
+    var fallbackMs = Math.max(5000, words * 430);
+    var advanced = false;
+    function next() { if (my !== token || advanced) { return; } advanced = true; clearTimeout(timer); timer = setTimeout(function () { play(i + 1); }, 700); }
+
+    if (canSpeak && $("voice").checked) {
+      try {
+        var u = new SpeechSynthesisUtterance(SCENES[i].say.replace(/\bA Q I\b/g, "AQI"));
+        u.lang = "en-IN"; u.rate = 0.95;
+        u.onend = next; u.onerror = next;
+        window.speechSynthesis.speak(u);
+        timer = setTimeout(next, fallbackMs * 2 + 4000); /* safety net if onend never fires */
+        return;
+      } catch (e) { /* fall through to timed mode */ }
+    }
+    timer = setTimeout(next, fallbackMs);
+  }
+
+  function finish() {
+    clearAll();
+    $("status").textContent = "Demo finished. Press Start to watch again.";
+    $("start").disabled = false; $("stop").disabled = true;
+  }
+
+  function start() {
+    clearAll();
+    t0 = Date.now(); clockTimer = setInterval(clock, 500); clock();
+    $("start").disabled = true; $("stop").disabled = false; $("stop").focus();
+    $("status").textContent = "Playing demo…";
+    play(0);
+  }
+
+  function stop() {
+    clearAll();
+    idx = -1;
+    $("start").disabled = false; $("stop").disabled = true;
+    $("status").textContent = "Stopped. Press Start to play again from the beginning.";
+    $("scene-no").textContent = "Scene 0 of " + SCENES.length; $("clock").textContent = "00:00";
+    $("s-title").textContent = "Welcome";
+    $("s-body").textContent = ""; var u = el("ul"); u.appendChild(el("li", "Click Start to begin the demo.")); $("s-body").appendChild(u);
+    $("caption").textContent = "The narration text appears here while the demo plays.";
+    $("bar").style.width = "0"; Array.prototype.forEach.call($("dots").children, function (d) { d.className = ""; });
+    $("start").focus();
+  }
+
+  $("start").addEventListener("click", start);
+  $("stop").addEventListener("click", stop);
+  $("voice").addEventListener("change", function () { if (!$("voice").checked && canSpeak) { try { window.speechSynthesis.cancel(); } catch (e) {} } });
+  window.addEventListener("beforeunload", function () { if (canSpeak) { try { window.speechSynthesis.cancel(); } catch (e) {} } });
+  $("scene-no").textContent = "Scene 0 of " + SCENES.length;
+})();
+</script>
+</body>
+</html>
